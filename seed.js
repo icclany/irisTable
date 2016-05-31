@@ -23,14 +23,11 @@ var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var Restaurant = mongoose.model('Restaurant');
-var Time = mongoose.model('Time');
-
 
 var wipeCollections = function() {
     return Promise.all([
         User.remove({}),
-        Restaurant.remove({}),
-        Time.remove({})
+        Restaurant.remove({})
     ]);
 };
 
@@ -48,55 +45,49 @@ var seedUsers = function() {
 
 };
 
-var seedTimes = function() {
-    var times = [{
-        time: '0500',
-        booked: false
-    }, {
-        time: '0530',
-        booked: false
-    }, {
-        time: '0600',
-        booked: false
-    }, {
-        time: '0630',
-        booked: false
-    }, {
-        time: '0700',
-        booked: false
-    }, {
-        time: '0730',
-        booked: false
-    }, {
-        time: '0800',
-        booked: false
-    }, {
-        time: '0830',
-        booked: false
-    }, {
-        time: '0900',
-        booked: false
-    }, {
-        time: '0930',
-        booked: false
-    }]
+// var seedTimes = function() {
+//     var times = [{
+//         time: '0500',
+//         booked: false
+//     }, {
+//         time: '0530',
+//         booked: false
+//     }, {
+//         time: '0600',
+//         booked: false
+//     }, {
+//         time: '0630',
+//         booked: false
+//     }, {
+//         time: '0700',
+//         booked: false
+//     }, {
+//         time: '0730',
+//         booked: false
+//     }, {
+//         time: '0800',
+//         booked: false
+//     }, {
+//         time: '0830',
+//         booked: false
+//     }]
 
-    return Time.create(times);
-}
+//     return Time.create(times);
+// }
 
-var seedRestaurants = function(times) {
-    var timeIds = times.map((obj) => obj._id);
+var seedRestaurants = function() {
+    // var timeIds = times.map((obj) => obj._id);
 
     var restaurants = [
     {
         name: 'Pigs in Blankets',
-        slots: timeIds
+        capacity: 50
     }, {
         name: "The Waterway Grille",
-        slots: timeIds
+        capacity: 100
     }, {
         name: "Mussels on Mussels",
-        slots: timeIds
+        capacity: 75
     }
     ]
 
@@ -111,10 +102,7 @@ connectToDb
         return seedUsers();
     })
     .then(function() {
-        return seedTimes();
-    })
-    .then(function(times) {
-        return seedRestaurants(times);
+        return seedRestaurants();
     })
     .then(function() {
         console.log(chalk.green('Seed successful!'));
