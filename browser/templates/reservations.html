@@ -1,0 +1,6 @@
+<res-form></res-form>
+<md-content>
+    <section layout="row" ng-repeat="restaurant in selectedRestaurants" layout-sm="column" layout-wrap>
+        <h5>{{restaurant.name}}</h5>
+        <md-button ng-click="makeReservation(restaurant._id)" ng-repeat="slot in restaurant.slots | filter: timeSearch()" class="md-raised md-warn">{{slot.time}}</md-button>
+</md-content>

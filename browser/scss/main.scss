@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fdfdfd;
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1460311150279-b4c1919da81a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=cf3567cb0aca843021a5260f87f18bbd");
+  background-size: 100% 100%;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+#main {
+  padding-top:10px;
+  margin: 0 auto;
+}
+
+@import 'directives/main';
+@import 'home/main';
+@import 'about/main';
+@import 'tutorial/main';
+@import 'login/main';

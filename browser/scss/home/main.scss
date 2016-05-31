@@ -1,0 +1,29 @@
+#home {
+    padding: 20px;
+    h1 {
+        margin-top: 10px;
+        text-align: left;
+        color: white;
+         text-shadow: 2px 2px #05354B;
+    }
+    p {
+    font-size: 17px;
+    }
+}
+
+.resImage {
+    width: 90%;
+    height: auto;
+}
+
+md-tabs {
+    height: 20vh;
+}
+
+.restaurantTabs {
+    height: 70vh;
+}
+
+md-tab-content {
+    height: 100%;
+}
