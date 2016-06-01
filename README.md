@@ -19,5 +19,5 @@ Prompt: Build a simple prototype for a restaurant reservation system, usable by 
 * Restaurant capacity should be stored in the database, and as reservations are made, the capacity is updated to reflect the remaining possible seating arrangements 
 
 # Extra To-Do's
-* Add location of each restaurant via Google Maps on the reservation page
+* <strike>Add location of each restaurant via Google Maps on the reservation page</strike>
 * Add a statistics page
