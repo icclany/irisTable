@@ -1,5 +1,5 @@
 'use strict';
-const core = angular.module('core', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngMaterial', 'rzModule']);
+const core = angular.module('core', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngMaterial', 'rzModule', 'ui.bootstrap.datetimepicker']);
 
 window.app = angular.module('irisTable', ['fsaPreBuilt', 'core']);
 

@@ -1,0 +1,24 @@
+<h4>Reservation for {{restaurant.name}}</h4>
+<md-content class="md-padding" layout="column" flex="50" layout-wrap>
+<div>
+    <h4>Number of Diners:</h4>
+    <md-input-container class="md-block" flex="15">
+        <md-select ng-model="data.size">
+            <md-option ng-repeat="number in diners" value="{{number}}">
+                {{number}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+    <p>For parties larger than 6, please call the restaurant.</p>
+    </div>
+
+<div flex=33>
+    <h4>Reservation Date:</h4>
+    <datetimepicker data-ng-model="data.date" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" data-on-set-time="onTimeSet(newDate, oldDate)" data-datetimepicker-config="{ minuteStep: 15 }"></datetimepicker>
+</div>
+
+<div flex=33>
+    <h4>{{message}}</h4>
+    <md-button ng-click="makeReservation()" ng-show="available" class="md-raised md-primary">Book</md-button>
+    </div>
+</md-content>

@@ -15,10 +15,9 @@ core.factory('resFactory', function ($http) {
     }
 
     // Makes a reservation
-    // NOTE: Need to add validation to double check that slot has not already been reserved
-    resFactory.makeReservation = function(resId, resObj) {
-        return $http.put('/api/restaurants/' + resId, resObj)
-        .then((reservation) => console.log("Reservation made"))
+    resFactory.makeReservation = function(resObj) {
+        // NOTE: Redirect to home page or confirmation page
+        return $http.post('/api/reservations', resObj);
     }
 
     // Gets all reservations

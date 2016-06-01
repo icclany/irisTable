@@ -12,9 +12,12 @@ router.post('/', (req, res, next) => {
     .then(null, next);
 });
 
+// // Get reservations at a certain time
+// router.get('/')
+
 // Get reservations for one restaurant
 router.get('/restaurants/:resId', (req, res, next) => {
-    Reservation.find({restaurant: resId})
+    Reservation.find({restaurant: req.params.resId})
     .populate('user restaurant')
     .then(reservations => res.json(reservations))
     .then(null, next);
@@ -22,7 +25,7 @@ router.get('/restaurants/:resId', (req, res, next) => {
 
 // Get reservations for one user
 router.get('/users/:userId', (req, res, next) => {
-    Reservation.find({user: userId})
+    Reservation.find({user: req.params.userId})
     .populate('user restaurant')
     .then(reservations => res.json(reservations))
     .then(null, next);
