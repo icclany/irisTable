@@ -22,6 +22,7 @@ Prompt: Build a simple prototype for a restaurant reservation system, usable by 
 * Customers should be able to to make/view/edit their own reservations
 * After dining, customers and servers should be able to rate each other (I got this idea from Uber, which I always thought was a great idea)
 * Add form validation on reservation page (date, size of reservation are required)
+* Schedule page is visible to staff, shows schedule for which restaurant the staff user works for 
 
 ## Reservation Functionality ##
 * <strike>Restaurant capacity should be stored in the database, and available reservations are calculated by seeing how much capacity is left within a dining window</strike>
