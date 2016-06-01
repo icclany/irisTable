@@ -1,13 +1,14 @@
-core.controller('homeCtrl', function($scope, $state) {
-
-    // Goes to reservations page
-
-    // NOTE: Would be nice if this also populated the selected restaurants in the reservation form, based on which restaurant the user was looking at.
-    $scope.goToReservation = function() {
-        $state.go('reservations', {restaurantId: '574dd0ccfd04e83e6cd4d07c'});
-    }
+core.controller('homeCtrl', function($scope, restaurants, $state) {
 
     // Sets current view tab to the first restaurant
     $scope.selectedRestaurant = 0;
+
+    $scope.restaurants = restaurants;
+
+    // Takes user to a restaurant's reservation page
+    $scope.goToReservation = function() {
+        $state.go('reservations', { restaurantId: restaurants[$scope.selectedRestaurant]._id});
+    }
+
 
 });

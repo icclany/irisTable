@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 
 var schema = new mongoose.Schema({
-    name: String,
     email: {
         type: String
     },
@@ -14,18 +13,7 @@ var schema = new mongoose.Schema({
     salt: {
         type: String
     },
-    twitter: {
-        id: String,
-        username: String,
-        token: String,
-        tokenSecret: String
-    },
-    facebook: {
-        id: String
-    },
-    google: {
-        id: String
-    }
+    restaurant: {type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant'}
 });
 
 // method to remove sensitive information from user objects before sending them out
@@ -64,4 +52,4 @@ schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
-mongoose.model('User', schema);
+mongoose.model('Server', schema);

@@ -2,6 +2,7 @@
 var router = require('express').Router();
 module.exports = router;
 var _ = require('lodash');
+const mongoose = require('mongoose');
 
 var ensureAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
@@ -10,6 +11,14 @@ var ensureAuthenticated = function (req, res, next) {
         res.status(401).end();
     }
 };
+
+// Get all users
+router.get('/', (req, res, next) => {
+    mongoose.model('User').find()
+    .then(users => res.json(users))
+    .then(null, next);
+});
+
 
 router.get('/secret-stash', ensureAuthenticated, function (req, res) {
 

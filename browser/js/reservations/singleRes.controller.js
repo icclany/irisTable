@@ -3,11 +3,10 @@ core.controller('singleResCtrl', function($scope, $mdDialog, $state, resFactory,
     let user = Session.user;
     $scope.restaurant = restaurant;
 
-    $scope.diners = [1, 2, 3, 4, 5, 6, '7+'];
+    $scope.diners = [1, 2, 3, 4, 5, 6];
 
     $scope.beforeRender = function($view, $dates, $leftDate, $upDate, $rightDate) {
-        // NOTE:
-        // 1. Make booked dates unselectable
+        // NOTE: Make booked dates unselectable
         if ($view === 'day') {
             // Only show days including and after today
             let today = moment().startOf('day').utc();
@@ -43,8 +42,6 @@ core.controller('singleResCtrl', function($scope, $mdDialog, $state, resFactory,
     }
 
     $scope.makeReservation = function(dataObj) {
-        // let dateFormat = moment($scope.data.date);
-        // console.log("dateformat is", dateFormat)
         return resFactory.makeReservation({
                 user: user._id,
                 restaurant: restaurant._id,
@@ -69,7 +66,8 @@ core.controller('singleResCtrl', function($scope, $mdDialog, $state, resFactory,
     function checkAvailability() {
         let diners = 0;
         let time = $scope.data.date;
-        let size = $scope.data.size || 0;
+
+        let size = parseInt($scope.data.size) || 0;
         reservations.forEach((res) => {
             // Check reservations within a 2 hour window
             if ((time <= (res.time + twoHours)) && (time >= res.time)) {

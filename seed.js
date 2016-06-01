@@ -23,63 +23,37 @@ var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var Restaurant = mongoose.model('Restaurant');
+var Reservation = mongoose.model('Reservation');
+
 
 var wipeCollections = function() {
     return Promise.all([
-        User.remove({}),
-        Restaurant.remove({})
+        // User.remove({}),
+        // Restaurant.remove({}),
+        Reservation.remove({})
     ]);
 };
 
 var seedUsers = function() {
 
     var users = [{
-        email: 'iris@iris.com',
+        name: 'Staff',
+        email: 'staff@iris.com',
         password: 'password'
     }, {
-        email: 'obama@gmail.com',
-        password: 'potus'
+        name: 'Diner',
+        email: 'diner@iris.com',
+        password: 'password'
     }];
 
     return User.create(users);
 
 };
 
-// var seedTimes = function() {
-//     var times = [{
-//         time: '0500',
-//         booked: false
-//     }, {
-//         time: '0530',
-//         booked: false
-//     }, {
-//         time: '0600',
-//         booked: false
-//     }, {
-//         time: '0630',
-//         booked: false
-//     }, {
-//         time: '0700',
-//         booked: false
-//     }, {
-//         time: '0730',
-//         booked: false
-//     }, {
-//         time: '0800',
-//         booked: false
-//     }, {
-//         time: '0830',
-//         booked: false
-//     }]
-
-//     return Time.create(times);
-// }
-
 var seedRestaurants = function() {
     // var timeIds = times.map((obj) => obj._id);
 
-    var restaurants = [
-    {
+    var restaurants = [{
         name: 'Pigs in Blankets',
         capacity: 50
     }, {
@@ -88,21 +62,53 @@ var seedRestaurants = function() {
     }, {
         name: "Mussels on Mussels",
         capacity: 75
-    }
-    ]
-
+    }]
     return Restaurant.create(restaurants);
+};
+
+var seedReservations = function() {
+    var reservations = [{
+            user: '574f28d8f077efac19b3e952',
+            restaurant: "574f28d8f077efac19b3e953",
+            size: 5,
+            time: "2016-06-01T22:30:00.000Z"
+        },{
+            user: '574f28d8f077efac19b3e952',
+            restaurant: "574f28d8f077efac19b3e953",
+            size: 5,
+            time: "2016-06-01T23:30:00.000Z"
+        },{
+            user: '574f28d8f077efac19b3e952',
+            restaurant: "574f28d8f077efac19b3e953",
+            size: 5,
+            time: "2016-06-01T23:30:00.000Z"
+        },{
+            user: '574f28d8f077efac19b3e952',
+            restaurant: "574f28d8f077efac19b3e953",
+            size: 5,
+            time: "2016-06-01T23:00:00.000Z"
+        },{
+            user: '574f28d8f077efac19b3e952',
+            restaurant: "574f28d8f077efac19b3e953",
+            size: 5,
+            time: "2016-06-01T22:30:00.000Z"
+        }
+    ]
+    return Reservation.create(reservations);
 }
 
 connectToDb
     .then(function() {
         return wipeCollections();
     })
+    // .then(function() {
+    //     return seedUsers();
+    // })
+    // .then(function() {
+    //     return seedRestaurants();
+    // })
     .then(function() {
-        return seedUsers();
-    })
-    .then(function() {
-        return seedRestaurants();
+        return seedReservations();
     })
     .then(function() {
         console.log(chalk.green('Seed successful!'));

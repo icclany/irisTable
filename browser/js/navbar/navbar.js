@@ -8,7 +8,6 @@ core.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state)
 
             scope.items = [
                 { label: 'Restaurants', state: 'home' },
-                { label: 'Make a Reservation', state: 'reservations' },
                 { label: 'Schedule', state: 'schedule', auth: true }
             ];
 

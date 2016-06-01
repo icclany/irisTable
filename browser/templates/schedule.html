@@ -1,0 +1,15 @@
+<section id="schedule">
+    <h1>Today's Reservations</h1>
+    <md-content>
+        <md-tabs class="restaurantTabs" md-selected="selectedIndex" md-align-tabs="top">
+            <md-tab ng-repeat="restaurant in restaurants" md-on-select="onTabSelected(restaurant)">
+                <md-tab-label>
+                    {{restaurant.name}}
+                </md-tab-label>
+                <md-tab-body>
+                    <ui-view></ui-view>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</section>

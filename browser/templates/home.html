@@ -3,7 +3,7 @@
     <md-content>
         <md-tabs class="restaurantTabs" md-selected="selectedRestaurant" md-align-tabs="top">
             <md-tab id="tab1">
-                <md-tab-label>Pigs in Blankets</md-tab-label>
+                <md-tab-label>{{restaurants[0].name}}</md-tab-label>
                 <md-tab-body>
                     <div layout="row">
                         <div flex><img class="resImage" src="http://i.imgur.com/ql8JbiO.jpg?1" />
@@ -20,7 +20,7 @@
                 </md-tab-body>
             </md-tab>
             <md-tab id="tab2">
-                <md-tab-label>The Waterway Grille</md-tab-label>
+                <md-tab-label>{{restaurants[1].name}}</md-tab-label>
                 <md-tab-body>
                     <div layout="row">
                         <div flex> <img class="resImage" src="http://i.imgur.com/cFH6kix.jpg" />
@@ -37,7 +37,7 @@
                 </md-tab-body>
             </md-tab>
             <md-tab id="tab3">
-                <md-tab-label>Mussels on Mussels</md-tab-label>
+                <md-tab-label>{{restaurants[2].name}}</md-tab-label>
                 <md-tab-body>
                     <div layout="row">
                         <div flex> <img class="resImage" src="http://i.imgur.com/WSly6En.jpg" />
