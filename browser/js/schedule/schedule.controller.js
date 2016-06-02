@@ -24,8 +24,12 @@ core.controller('scheduleCtrl', function($scope, $state, restaurants, reservatio
 
 core.controller('scheduleDetailCtrl', function($scope, $state, reservations) {
 
+    // Default to the first tab
+    $scope.selectedIndex = 0;
+
     let today = new Date();
 
+    // Setting basic time slots for now - this should depends on the restaurant's hours
     let timeSlots = [
     {
         display: "5:00 PM",

@@ -35,10 +35,33 @@ body {
     }
 }
 
+#user-detail {
+    padding: 20px;
+    h1 {
+        margin-top: 10px;
+        text-align: left;
+        color: white;
+         text-shadow: 2px 2px #05354B;
+    }
+    p {
+    font-size: 17px;
+    }
+}
+
+.section-header .md-toolbar-tools {
+  background-color: #E5E5E5;
+  span {
+  color: black;
+  font-size: 1.3em;
+  }
+}
+
 @import 'directives/main';
 @import 'home/main';
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
 @import 'schedule/main';
+@import 'admin/main';
+
 

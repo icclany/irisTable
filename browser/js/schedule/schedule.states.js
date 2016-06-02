@@ -1,12 +1,10 @@
 app.config(function ($stateProvider) {
 
-    // NOTE: This page is intended to show the booking schedules for each restaurant, including party size, time, and user
     $stateProvider.state('schedule', {
         url: '/schedule',
         templateUrl: '/templates/schedule.html',
         controller: 'scheduleCtrl',
         resolve: {
-            // NOTE: Change this to be only the restaurant/reservations relevant to the user
             restaurants: function(resFactory) {
                 return resFactory.fetchAllRestaurants();
             },

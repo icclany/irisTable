@@ -11,6 +11,7 @@ app.config(function ($stateProvider) {
 app.controller('LoginCtrl', function ($scope, AuthService, $state) {
 
     $scope.login = {};
+    $scope.signup = {};
     $scope.error = null;
 
     $scope.sendLogin = function (loginInfo) {
@@ -24,5 +25,16 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
         });
 
     };
+
+     $scope.sendSignup = () => {
+
+        $scope.error = null;
+
+        AuthService.signup($scope.signup).then(function(user) {
+            $state.go('home');
+        }).catch(function() {
+            $scope.error = "There was an error signing you up.";
+        });
+    }
 
 });

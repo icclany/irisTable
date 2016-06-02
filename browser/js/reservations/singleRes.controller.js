@@ -21,7 +21,6 @@ core.controller('singleResCtrl', function($scope, $mdDialog, $state, resFactory,
             date = new Date();
             hourBuffer = date.setTime(date.getTime() - 60 * 60 * 1000);
             $dates.forEach((date) => {
-                console.log(typeof date.localDateValue())
                 if (date.localDateValue() < hourBuffer) {
                     date.selectable = false;
                 }
@@ -55,14 +54,14 @@ core.controller('singleResCtrl', function($scope, $mdDialog, $state, resFactory,
                 user: user._id,
                 restaurant: restaurant._id,
                 size: $scope.data.size,
-                time: $scope.data.date
+                time: Date.parse($scope.data.date)
             })
             .then((reservation) => {
                 $mdDialog.show(
                     $mdDialog.alert()
                     .clickOutsideToClose(true)
                     .title('Reservation booked!')
-                    .textContent('We look forward to seeing you on ' + $scope.data.date)
+                    .textContent('We look forward to seeing you on ' + moment($scope.data.date).format("dddd, MMMM Do, h:mm a"))
                     .ariaLabel('Alert Dialog Demo')
                     .ok('Got it!')
                 );

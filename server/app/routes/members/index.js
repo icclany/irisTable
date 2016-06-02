@@ -19,6 +19,24 @@ router.get('/', (req, res, next) => {
     .then(null, next);
 });
 
+// Sign up
+router.post('/', (req, res, next) => { // create new
+    mongoose.model('User').create(req.body)
+        .then(newUser => res.send({user: newUser}))
+        .then(null, next);
+});
+
+// Edit
+router.put('/:userId', (req, res, next) => { // create new
+    mongoose.model('User').findById(req.params.userId)
+        .then(user => {
+            _.extend(user, req.body);
+            return user.save();
+        })
+        .then(savedUser => res.send(savedUser))
+        .then(null, next);
+});
+
 
 router.get('/secret-stash', ensureAuthenticated, function (req, res) {
 

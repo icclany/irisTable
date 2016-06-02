@@ -1,0 +1,16 @@
+<div class="admin-container" md-whiteframe="15">
+    <md-input-container id="adminSearch">
+        <label>Search:</label>
+        <input type="text" ng-model="searchText">
+    </md-input-container>
+    <md-list>
+    <md-list-item ng-repeat="user in users | filter:searchText" ui-sref-active="active">
+            {{user.name}},
+            {{user.userType}}
+            <span class="buttons-right">
+            <md-button ng-click="setType(user, 'staff')">Set to Staff</md-button>
+            <md-button ng-click="setType(user, 'customer')">Set to Customer</md-button>
+            </span>
+        </md-list-item>
+        </md-list>
+</div>

@@ -6,10 +6,12 @@ var _ = require('lodash');
 var schema = new mongoose.Schema({
     name: String,
     email: {
-        type: String
+        type: String,
+        required: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
     },
     salt: {
         type: String
@@ -26,7 +28,12 @@ var schema = new mongoose.Schema({
     google: {
         id: String
     },
-    notes: String
+    notes: String,
+    userType: {
+        type: String,
+        default: 'customer',
+        enum: ['admin', 'staff', 'customer']
+    }
 });
 
 // method to remove sensitive information from user objects before sending them out

@@ -2,7 +2,6 @@
 
     'use strict';
 
-    // Hope you didn't forget Angular! Duh-doy.
     if (!window.angular) throw new Error('I can\'t find Angular!');
 
     var app = angular.module('fsaPreBuilt', []);
@@ -51,6 +50,7 @@
     app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q) {
 
         function onSuccessfulLogin(response) {
+            console.log("data is", response.data)
             var data = response.data;
             Session.create(data.id, data.user);
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
@@ -93,6 +93,14 @@
                     return $q.reject({ message: 'Invalid login credentials.' });
                 });
         };
+
+        this.signup = function (userInfo) {
+            return $http.post('/api/members', userInfo)
+            .then(onSuccessfulLogin)
+            .catch(function(err){
+                return $q.reject({ message: 'There was an error signing up:' + err})
+            })
+        }
 
         this.logout = function () {
             return $http.get('/logout').then(function () {

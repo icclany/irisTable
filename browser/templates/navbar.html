@@ -1,11 +1,22 @@
 <nav class="navbar navbar-static-top">
     <div class="container">
         <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+            <li>
+                <a ui-sref-active="active" ui-sref="home">Home</a>
             </li>
+            <li ng-show="isStaff() || isAdmin()">
+                <a ui-sref-active="active" ui-sref="schedule">Schedule</a>
+            </li>
+            <li ng-show="isCustomer() || isAdmin()">
+                <a ui-sref-active="active" ui-sref="userpage">My Reservations</a>
+            </li>
+            <li ng-show="isAdmin()">
+                <a ui-sref-active="active" ui-sref="adminpage">Admin Only</a>
+            </li>
+
         </ul>
-        <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
+
+        <button ng-show="!user" ui-sref="login" class="btn login-button">Login/Signup</button>
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>

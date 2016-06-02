@@ -28,7 +28,7 @@ var Reservation = mongoose.model('Reservation');
 
 var wipeCollections = function() {
     return Promise.all([
-        // User.remove({}),
+        User.remove({}),
         // Restaurant.remove({}),
         Reservation.remove({})
     ]);
@@ -39,11 +39,23 @@ var seedUsers = function() {
     var users = [{
         name: 'Staff',
         email: 'staff@iris.com',
-        password: 'password'
+        password: 'password',
+        userType: 'staff'
     }, {
-        name: 'Diner',
+        name: 'Customer 1',
         email: 'diner@iris.com',
-        password: 'password'
+        password: 'password',
+        userType: 'customer'
+    },{
+        name: 'Customer 2',
+        email: 'diner2@iris.com',
+        password: 'password',
+        userType: 'customer'
+    }, {
+        name: 'Iris Chang',
+        email: 'icc.lany@gmail.com',
+        password: 'password',
+        userType: 'admin'
     }];
 
     return User.create(users);
@@ -101,15 +113,15 @@ connectToDb
     .then(function() {
         return wipeCollections();
     })
-    // .then(function() {
-    //     return seedUsers();
-    // })
+    .then(function() {
+        return seedUsers();
+    })
     // .then(function() {
     //     return seedRestaurants();
     // })
-    .then(function() {
-        return seedReservations();
-    })
+    // .then(function() {
+    //     return seedReservations();
+    // })
     .then(function() {
         console.log(chalk.green('Seed successful!'));
         process.kill(0);

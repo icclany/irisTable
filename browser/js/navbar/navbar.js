@@ -5,16 +5,29 @@ core.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state)
         scope: {},
         templateUrl: 'templates/navbar.html',
         link: function (scope) {
-
             scope.items = [
-                { label: 'Restaurants', state: 'home' },
-                { label: 'Schedule', state: 'schedule', auth: true }
+                { label: 'Home', state: 'home' },
+                { label: 'Schedule', state: 'schedule', auth: true },
+                { label: 'My Reservations', state: 'userpage', auth: true }
             ];
 
             scope.user = null;
+            $rootScope.userType = null;
 
             scope.isLoggedIn = function () {
                 return AuthService.isAuthenticated();
+            };
+
+            scope.isCustomer = function () {
+                return ($rootScope.userType === "customer");
+            };
+
+            scope.isStaff = function () {
+                return ($rootScope.userType === "staff");
+            };
+
+            scope.isAdmin = function () {
+                return ($rootScope.userType === "admin");
             };
 
             scope.logout = function () {
@@ -26,11 +39,14 @@ core.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state)
             var setUser = function () {
                 AuthService.getLoggedInUser().then(function (user) {
                     scope.user = user;
+                    $rootScope.userType = user.userType;
+                    console.log("set userType to", $rootScope.userType)
                 });
             };
 
             var removeUser = function () {
                 scope.user = null;
+                $rootScope.userType = null;
             };
 
             setUser();
