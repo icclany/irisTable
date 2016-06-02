@@ -25,7 +25,8 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
-    }
+    },
+    notes: String
 });
 
 // method to remove sensitive information from user objects before sending them out

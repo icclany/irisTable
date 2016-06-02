@@ -5,24 +5,33 @@ core.controller('singleResCtrl', function($scope, $mdDialog, $state, resFactory,
 
     $scope.diners = [1, 2, 3, 4, 5, 6];
 
+    let date, dateBuffer, hourBuffer;
+
     $scope.beforeRender = function($view, $dates, $leftDate, $upDate, $rightDate) {
-        // NOTE: Make booked dates unselectable
+
         if ($view === 'day') {
-            // Only show days including and after today
-            let today = moment().startOf('day').utc();
-            for (let i = 0; i < $dates.length; i++) {
-                if (today.isAfter($dates[i].localDateValue(), 'day')) {
-                    $dates[i].selectable = false;
+            date = new Date();
+            dateBuffer = date.setTime(date.getTime() - 86400000);
+            $dates.forEach((date) => {
+                if (date.localDateValue() < dateBuffer) {
+                    date.selectable = false;
                 }
-            }
+            });
+        } else if ($view === 'hour') {
+            date = new Date();
+            hourBuffer = date.setTime(date.getTime() - 60 * 60 * 1000);
+            $dates.forEach((date) => {
+                console.log(typeof date.localDateValue())
+                if (date.localDateValue() < hourBuffer) {
+                    date.selectable = false;
+                }
+            });
         } else {
-            // Only show hours between 5-8 PM
-            for (let i = 0; i < $dates.length; i++) {
-                let time = moment($dates[i].localDateValue());
-                if (!((time.hours() <= 20) && (time.hours() >= 17))) {
-                    $dates[i].selectable = false;
+            $dates.forEach((date) => {
+                if (date.localDateValue() < Date.now()) {
+                    date.selectable = false;
                 }
-            }
+            });
         }
     }
 

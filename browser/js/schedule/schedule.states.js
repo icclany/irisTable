@@ -9,6 +9,9 @@ app.config(function ($stateProvider) {
             // NOTE: Change this to be only the restaurant/reservations relevant to the user
             restaurants: function(resFactory) {
                 return resFactory.fetchAllRestaurants();
+            },
+            reservations: function(resFactory) {
+                return resFactory.fetchAllReservations();
             }
         },
         data: {

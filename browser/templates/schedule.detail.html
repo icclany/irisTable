@@ -1,19 +1,21 @@
-        <div layout="column" style="height:500px;" ng-cloak>
-            <section layout="row" flex>
-                <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="4">
-                    <md-content layout-padding>
-                    <md-list flex>
-                         <md-list-item class="md-3-line" ng-repeat="time in times" ng-click="goToTime(time.hours)">{{time.display}}
-                         </md-list-item>
-                        </md-list>
-                    </md-content>
-                </md-sidenav>
-                <md-content flex layout-padding>
-                    <div layout="column" layout-fill layout-align="top left">
-                        <ul>
-                            <li class="reservationList" ng-repeat="reservation in reservations">{{reservation.user.name}}, party of {{reservation.size}}<md-button>Check out</md-button><md-button>Add Notes</md-button></li>
-                        </ul>
-                    </div>
-                </md-content>
-            </section>
-        </div>
+<div layout="column" style="height:500px;" ng-cloak>
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="4" flex=20>
+            <md-content layout-padding>
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="time in times" ng-click="goToTime(time.hours)">{{time.display}}
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-content flex layout-padding>
+            <div layout="column" layout-fill layout-align="top left">
+                <ul>
+                    <li class="reservationList" ng-repeat="reservation in reservations">{{reservation.user.name}}, party of {{reservation.size}}
+                        <md-button>View User Details</md-button>
+                    </li>
+                </ul>
+            </div>
+        </md-content>
+    </section>
+</div>

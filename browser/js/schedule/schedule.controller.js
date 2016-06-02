@@ -1,9 +1,23 @@
-core.controller('scheduleCtrl', function($scope, $state, restaurants) {
+core.controller('scheduleCtrl', function($scope, $state, restaurants, reservations, resFactory) {
 
     $scope.restaurants = restaurants;
 
     $scope.onTabSelected = function(restaurant) {
         $state.go("schedule.detail", {resId: restaurant._id});
+    }
+
+    $scope.reservationList = reservations.filter((reservation) => {
+        // Show reservations that are still going (no check out time)
+        return !(reservation.checkoutTime);
+    })
+
+    $scope.checkOut = function(reservation) {
+        let idx = $scope.reservationList.indexOf(reservation);
+        resFactory.updateReservation(reservation._id, {
+            checkoutTime: Date.now()
+        });
+        // Remove the reservation from the DOM
+        $scope.reservationList.splice(idx, 1);
     }
 
 });

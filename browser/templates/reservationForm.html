@@ -1,7 +1,7 @@
 <md-content class="md-padding" layout="row" layout-wrap>
 <div flex="33">
     <h4>Reservation Date:</h4>
-    <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+    <md-datepicker ng-model="myDate" ng-required="true"md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
 
      <rzslider
     rz-slider-model="timeSlider.min"
@@ -15,7 +15,7 @@
 <div flex="33">
     <h4>Number of Diners:</h4>
      <md-input-container class="md-block" flex-gt-sm>
-    <md-select ng-model="numPeople">
+    <md-select ng-model="numPeople" ng-required="true">
               <md-option ng-repeat="number in diners" value="{{number}}">
                 {{number}}
               </md-option>

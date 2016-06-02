@@ -38,6 +38,12 @@ core.factory('resFactory', function ($http) {
         .then((reservations) => reservations.data)
     }
 
+    // Update a reservation
+    resFactory.updateReservation = function(resId, updateObj) {
+        return $http.put('/api/reservations/' + resId, updateObj)
+        .then((reservation) => reservation.data);
+    }
+
     return resFactory;
 
 });

@@ -1,15 +1,29 @@
 <section id="schedule">
     <h1>Today's Reservations</h1>
-    <md-content>
-        <md-tabs class="restaurantTabs" md-selected="selectedIndex" md-align-tabs="top">
-            <md-tab ng-repeat="restaurant in restaurants" md-on-select="onTabSelected(restaurant)">
-                <md-tab-label>
-                    {{restaurant.name}}
-                </md-tab-label>
-                <md-tab-body>
-                    <ui-view></ui-view>
-                </md-tab-body>
-            </md-tab>
-        </md-tabs>
-    </md-content>
+    <div layout="row">
+        <md-content flex=65>
+            <md-tabs class="restaurantTabs" md-selected="selectedIndex" md-align-tabs="top">
+                <md-tab ng-repeat="restaurant in restaurants" md-on-select="onTabSelected(restaurant)">
+                    <md-tab-label>
+                        {{restaurant.name}}
+                    </md-tab-label>
+                    <md-tab-body>
+                        <ui-view></ui-view>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+        <md-content id="reservationListBox" flex=35>
+            <h3>Ongoing reservations</h3>
+            <p><i>In the event of a cancellation, add a note and mark reservation as "Finished"</i></p>
+            <br>
+            <div class="reservationList" ng-repeat="reservation in reservationList"><b>{{reservation.user.name}}</b>, {{reservation.restaurant.name}} for {{reservation.size}}
+                <div>
+                    <md-button class="greyBtn" ng-click="checkOut(reservation)">Finished</md-button>
+                    <md-button class="greyBtn">Add Notes</md-button>
+                </div>
+                <br>
+            </div>
+        </md-content>
+    </div>
 </section>

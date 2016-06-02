@@ -1,3 +1,21 @@
 .reservationList {
     font-size: 16px;
 }
+
+#reservationListBox {
+padding-left: 20px;
+padding-right: 15px;
+    background-color: #00BCD4;
+    h3 {
+    color: white;
+    margin-top: 20px;
+    }
+    p {
+    font-size: 16px;
+    }
+}
+
+.md-button.greyBtn {
+    background-color: #DADADA;
+    font-size: 12px;
+}

@@ -3,7 +3,7 @@
 <div>
     <h5>Number of Diners:</h5>
     <md-input-container class="md-block" flex="15">
-        <md-select ng-model="data.size">
+        <md-select ng-model="data.size" ng-required="true">
             <md-option ng-repeat="number in diners" value="{{number}}">
                 {{number}}
             </md-option>
@@ -14,7 +14,7 @@
 
 <div flex=33>
     <h5>Reservation Date:</h5>
-    <datetimepicker data-ng-model="data.date" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" data-on-set-time="onTimeSet(newDate, oldDate)" data-datetimepicker-config="{ minuteStep: 15 }"></datetimepicker>
+    <datetimepicker data-ng-model="data.date" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" data-on-set-time="onTimeSet(newDate, oldDate)" data-datetimepicker-config="{ minuteStep: 30 }" ng-required="true"></datetimepicker>
 </div>
 
 <div flex=33>
