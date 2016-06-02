@@ -19,6 +19,7 @@ Prompt: Build a simple prototype for a restaurant reservation system, usable by 
 * Which customers make the most reservations? They should get perks based on how often they dine at each restaurant, to let them know they are appreciated
 
 ## Functional To-Do's ##
+* <strike>All users are marked as customers by default; admin (me) can later mark them a staff. Staff/Customers have different site visibility</strike>
 * Customers should be able to to make/view/edit their own reservations
 * After dining, customers and servers should be able to rate each other (I got this idea from Uber, which I always thought was a great idea)
 * Add form validation on reservation page (date, size of reservation are required)
