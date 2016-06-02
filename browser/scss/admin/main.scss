@@ -1,13 +1,18 @@
 #adminSearch {
     width: 50vw;
     md-input-container {
-        padding: 10px 10px 1px;
+        padding: 5px 5px 1px;
     }
 }
 
-.admin-container {
-    padding-top: 10px;
-    background-color: white;
+#admin-detail {
+    padding: 20px;
+    p {
+    font-size: 17px;
+    }
+    .adminContent {
+    padding: 20px;
+    }
 }
 
 .buttons-right {
