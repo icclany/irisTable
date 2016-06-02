@@ -6,7 +6,7 @@ Prompt: Build a simple prototype for a restaurant reservation system, usable by 
 ## Data to Collect ##
 ### Customers ###
 * Users' most frequent reservation time - the site could prepopulate the reservation form with this, to save time. In general, shortcuts would be nice so users get a sense of having a personalized experience from Iris Restaurant Group (e.g. "Welcome back, John! Would you like make another dinner reservation at Mussels on Mussels?")
-* Staff should be able to leave notes on customers in case they have dietary restrictions, medical issues, or also if we want to refuse their business in the future for poor behavior
+* Staff and customers should be able to leave notes on the customer's profile in case they have dietary restrictions, medical issues. Staff should be able to make notes on customers if we want to refuse their business in the future for poor behavior
 
 ### Reservations ###
 * <strike>Having a record of all reservations (name, size, etc) will be useful to fact check or respond to Yelp reviews</strike>
