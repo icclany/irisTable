@@ -29,31 +29,31 @@ var Reservation = mongoose.model('Reservation');
 var wipeCollections = function() {
     return Promise.all([
         User.remove({}),
-        // Restaurant.remove({}),
-        Reservation.remove({})
+        Restaurant.remove({})
+        // Reservation.remove({})
     ]);
 };
 
 var seedUsers = function() {
 
     var users = [{
-        name: 'Staff',
+        name: 'Frodo Baggins',
         email: 'staff@iris.com',
         password: 'password',
         userType: 'staff'
     }, {
-        name: 'Customer 1',
+        name: 'Samwise Gamgee',
         email: 'diner@iris.com',
         password: 'password',
         userType: 'customer'
     },{
-        name: 'Customer 2',
+        name: 'Meriadoc Brandybuck',
         email: 'diner2@iris.com',
         password: 'password',
         userType: 'customer'
     }, {
         name: 'Iris Chang',
-        email: 'icc.lany@gmail.com',
+        email: 'admin@iris.com',
         password: 'password',
         userType: 'admin'
     }];
@@ -63,7 +63,6 @@ var seedUsers = function() {
 };
 
 var seedRestaurants = function() {
-    // var timeIds = times.map((obj) => obj._id);
 
     var restaurants = [{
         name: 'Pigs in Blankets',
@@ -78,37 +77,6 @@ var seedRestaurants = function() {
     return Restaurant.create(restaurants);
 };
 
-var seedReservations = function() {
-    var reservations = [{
-            user: '574f28d8f077efac19b3e952',
-            restaurant: "574f28d8f077efac19b3e953",
-            size: 5,
-            time: "2016-06-01T22:30:00.000Z"
-        },{
-            user: '574f28d8f077efac19b3e952',
-            restaurant: "574f28d8f077efac19b3e953",
-            size: 5,
-            time: "2016-06-01T23:30:00.000Z"
-        },{
-            user: '574f28d8f077efac19b3e952',
-            restaurant: "574f28d8f077efac19b3e953",
-            size: 5,
-            time: "2016-06-01T23:30:00.000Z"
-        },{
-            user: '574f28d8f077efac19b3e952',
-            restaurant: "574f28d8f077efac19b3e953",
-            size: 5,
-            time: "2016-06-01T23:00:00.000Z"
-        },{
-            user: '574f28d8f077efac19b3e952',
-            restaurant: "574f28d8f077efac19b3e953",
-            size: 5,
-            time: "2016-06-01T22:30:00.000Z"
-        }
-    ]
-    return Reservation.create(reservations);
-}
-
 connectToDb
     .then(function() {
         return wipeCollections();
@@ -116,12 +84,9 @@ connectToDb
     .then(function() {
         return seedUsers();
     })
-    // .then(function() {
-    //     return seedRestaurants();
-    // })
-    // .then(function() {
-    //     return seedReservations();
-    // })
+    .then(function() {
+        return seedRestaurants();
+    })
     .then(function() {
         console.log(chalk.green('Seed successful!'));
         process.kill(0);
