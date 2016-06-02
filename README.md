@@ -19,7 +19,7 @@ Prompt: Build a simple prototype for a restaurant reservation system, usable by 
 * Staff activity - who modifies the most reservations or checks out the most customers? This can be used to assess performance of staff
 * Which customers make the most reservations? They should get perks based on how often they dine at each restaurant, to let them know they are appreciated
 
-## Models ##
+## MongoDB Models ##
 * Restaurants
 * Reservations
 * Members
