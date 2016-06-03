@@ -34,6 +34,7 @@ Prompt: Build a simple prototype for a restaurant reservation system, usable by 
 
 ## Extra To-Do's/ Future ##
 
+* Send email confirmation after reservation is made
 * Each reservation should keep an update history to hold staff/customers accountable for changes made
 * The schedule page, viewable by staff, should show just the restaurant the staff works for. They don't need to see the schedule of other restaurants (this could be implemented by perhaps adding a restaurantId reference to each staff member).
 * The schedule page's current-diners panel should display the total number of diners at the bottom. This will be helpful for staff to check availability for walk-in diners.
