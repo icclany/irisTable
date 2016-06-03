@@ -44,6 +44,7 @@ Prompt: Build a simple prototype for a restaurant reservation system, usable by 
 * Add form validation on reservation page (date, size of reservation are required)
 * Add restaurant hours to restaurant Model. That way, each restaurant's reservation page and schedule page can filter by the restaurant hours currently in the system. Right now, I'm just using a sample array of the same times for all.
 * Add a statistics page
+* Add tests :(
 * Use something else than angular-bootstrap-datetimepicker if I want to customize more
 
 Note: This site was generated with the [FSG boilerplate](https://github.com/FullstackAcademy/fsg)
